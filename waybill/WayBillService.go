@@ -26,9 +26,10 @@ func chekServiceUserBody(su, sp string) []byte {
 }
 
 func ChekServiceUser(req CheckServiceUserRequest) CheckServiceUserResponse {
-	var result chekServiceUserEnv
-	soap.SendRequest(chekServiceUserBody(req.Su, req.Sp), &result, getURL())
-	return result.Body.Data
+	var result CheckServiceUserResponse
+	rawData := soap.SendRequest(chekServiceUserBody(req.Su, req.Sp), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }
 
 func closeWaybillBody(su, sp string, id int) []byte {
@@ -48,9 +49,10 @@ func closeWaybillBody(su, sp string, id int) []byte {
 }
 
 func CloseWaybill(req CloseWaybillRequest) CloseWaybillResponse {
-	var result closeWaybillEnv
-	soap.SendRequest(closeWaybillBody(req.Su, req.Sp, req.Id), &result, getURL())
-	return result.Body.Data
+	var result CloseWaybillResponse
+	rawData := soap.SendRequest(closeWaybillBody(req.Su, req.Sp, req.Id), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }
 
 func closeWaybillTransporterBody(su, sp string, id int, reception_info, reciever_info, delivery string) []byte {
@@ -71,9 +73,10 @@ func closeWaybillTransporterBody(su, sp string, id int, reception_info, reciever
 }
 
 func CloseWaybillTransporter(req CloseWaybillTransporterRequest) CloseWaybillTransporterResponse {
-	var result closeWaybillTransporterEnv
-	soap.SendRequest(closeWaybillTransporterBody(req.Su, req.Sp, req.Id, req.ReceptionInfo, req.RecieverInfo, req.DeliveryDate), &result, getURL())
-	return result.Body.Data
+	var result CloseWaybillTransporterResponse
+	rawData := soap.SendRequest(closeWaybillTransporterBody(req.Su, req.Sp, req.Id, req.ReceptionInfo, req.RecieverInfo, req.DeliveryDate), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }
 
 func closeWaybillVdBody(su, sp, delivery string, id int) []byte {
@@ -94,9 +97,10 @@ func closeWaybillVdBody(su, sp, delivery string, id int) []byte {
 }
 
 func CloseWaybillVd(req CloseWaybillVdRequest) CloseWaybillVdResponse {
-	var result CloseWaybillVdEnv
-	soap.SendRequest(closeWaybillVdBody(req.Su, req.Sp, req.DeliveryDate, req.Id), &result, getURL())
-	return result.Body.Data
+	var result CloseWaybillVdResponse
+	rawData := soap.SendRequest(closeWaybillVdBody(req.Su, req.Sp, req.DeliveryDate, req.Id), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }
 
 func confirmWaybillBody(su, sp string, id int) []byte {
@@ -113,9 +117,10 @@ func confirmWaybillBody(su, sp string, id int) []byte {
 }
 
 func ConfirmWaybill(req ConfirmWaybillRequest) ConfirmWaybillResponse {
-	var result ConfirmWaybillEnv
-	soap.SendRequest(confirmWaybillBody(req.Su, req.Sp, req.Id), &result, getURL())
-	return result.Body.Data
+	var result ConfirmWaybillResponse
+	rawData := soap.SendRequest(confirmWaybillBody(req.Su, req.Sp, req.Id), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }
 
 func createServiceUserBody(userName, userPassword, ip, name, su, sp string) []byte {
@@ -135,9 +140,10 @@ func createServiceUserBody(userName, userPassword, ip, name, su, sp string) []by
 }
 
 func CreateServiceUser(req CreateServiceUserRequest) CreateServiceUserResponse {
-	var result CreateServiceUserEnv
-	soap.SendRequest(createServiceUserBody(req.UserName, req.UserPassword, req.Ip, req.Name, req.Su, req.Sp), &result, getURL())
-	return result.Body.Data
+	var result CreateServiceUserResponse
+	rawData := soap.SendRequest(createServiceUserBody(req.UserName, req.UserPassword, req.Ip, req.Name, req.Su, req.Sp), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }
 
 func delWaybillBody(su, sp string, id int) []byte {
@@ -154,9 +160,10 @@ func delWaybillBody(su, sp string, id int) []byte {
 }
 
 func DelWaybill(req DelWaybillRequest) DelWaybillResponse {
-	var result DelWaybillEnv
-	soap.SendRequest(delWaybillBody(req.Su, req.Sp, req.Id), &result, getURL())
-	return result.Body.Data
+	var result DelWaybillResponse
+	rawData := soap.SendRequest(delWaybillBody(req.Su, req.Sp, req.Id), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }
 
 func deleteBarCodeBody(su, sp, bar string) []byte {
@@ -173,9 +180,10 @@ func deleteBarCodeBody(su, sp, bar string) []byte {
 }
 
 func DeleteBarCode(req DeleteBarCodeRequest) DeleteBarCodeResponse {
-	var result DeleteBarCodeEnv
-	soap.SendRequest(deleteBarCodeBody(req.Su, req.Sp, req.BarCode), &result, getURL())
-	return result.Body.Data
+	var result DeleteBarCodeResponse
+	rawData := soap.SendRequest(deleteBarCodeBody(req.Su, req.Sp, req.BarCode), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }
 
 func deleteCarNumbersBody(su, sp, number string) []byte {
@@ -192,9 +200,10 @@ func deleteCarNumbersBody(su, sp, number string) []byte {
 }
 
 func DeleteCarNumbers(req DeleteCarNumbersRequest) DeleteCarNumbersResponse {
-	var result DeleteCarNumbersEnv
-	soap.SendRequest(deleteCarNumbersBody(req.Su, req.Sp, req.CarNumber), &result, getURL())
-	return result.Body.Data
+	var result DeleteCarNumbersResponse
+	rawData := soap.SendRequest(deleteCarNumbersBody(req.Su, req.Sp, req.CarNumber), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }
 
 func deleteWaybillTamplateBody(su, sp string, id int) []byte {
@@ -211,7 +220,28 @@ func deleteWaybillTamplateBody(su, sp string, id int) []byte {
 }
 
 func DeleteWaybillTamplate(req DeleteWaybillTamplateRequest) DeleteWaybillTamplateResponse {
-	var result DeleteWaybillTamplateEnv
-	soap.SendRequest(deleteWaybillTamplateBody(req.Su, req.Sp, req.Id), &result, getURL())
-	return result.Body.Data
+	var result DeleteWaybillTamplateResponse
+	rawData := soap.SendRequest(deleteWaybillTamplateBody(req.Su, req.Sp, req.Id), &result, getURL())
+	result.XMLBody = rawData
+	return result
+}
+
+func getAdjustedWaybillBody(su, sp string, id int) []byte {
+	return []byte(strings.TrimSpace(fmt.Sprintf(`
+	<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<get_adjusted_waybill xmlns="http://tempuri.org/">
+		<su>%s</su>
+		<sp>%s</sp>
+		<id>%d</id>
+		</get_adjusted_waybill>
+	</soap:Body>
+	</soap:Envelope>`, su, sp, id)))
+}
+
+func GetAdjustedWaybill(req GetAdjustedWaybillRequest) GetAdjustedWaybillResponse {
+	var result GetAdjustedWaybillResponse
+	rawData := soap.SendRequest(getAdjustedWaybillBody(req.Su, req.Sp, req.Id), &result, getURL())
+	result.XMLBody = rawData
+	return result
 }

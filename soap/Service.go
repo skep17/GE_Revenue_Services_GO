@@ -8,11 +8,11 @@ import (
 	"net/http"
 )
 
-func SendRequest(reqBody []byte, resBody any, url string) {
+func SendRequest(reqBody []byte, resBody any, url string) string {
 	req, err := http.NewRequest("POST", url, bytes.NewReader(reqBody))
 	if err != nil {
 		log.Fatal("Error on creating request object. ", err.Error())
-		return
+		return ""
 	}
 	req.Header.Set("Content-type", "text/xml")
 
@@ -27,12 +27,22 @@ func SendRequest(reqBody []byte, resBody any, url string) {
 	res, err := client.Do(req)
 	if err != nil {
 		log.Fatal("Error on dispatching request. ", err.Error())
-		return
+		return ""
 	}
+
+	temp := res.Body
 
 	err = xml.NewDecoder(res.Body).Decode(resBody)
 	if err != nil {
 		log.Fatal("Error on unmarshaling xml. ", err.Error())
-		return
+		return ""
 	}
+
+	resByteData := new(bytes.Buffer)
+
+	resByteData.ReadFrom(temp)
+
+	resRaw := resByteData.String()
+
+	return resRaw
 }
