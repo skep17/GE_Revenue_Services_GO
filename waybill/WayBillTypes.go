@@ -111,7 +111,7 @@ type CreateServiceUserRequest struct {
 }
 
 type CreateServiceUserResponse struct {
-	result bool `xml:"create_service_userResult"`
+	Result bool `xml:"create_service_userResult"`
 }
 
 type DelWaybillEnv struct {
