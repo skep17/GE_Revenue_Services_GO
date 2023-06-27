@@ -4,15 +4,52 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/xml"
+	"io"
 	"log"
 	"net/http"
 )
 
-func SendRequest(reqBody []byte, resBody any, url string) string {
-	req, err := http.NewRequest("POST", url, bytes.NewReader(reqBody))
+type SoapEnvelope struct {
+	XMLName xml.Name `xml:"soapenv:Envelope"`
+	SoapEnv string   `xml:"xmlns:soapenv,attr"`
+	Tem     string   `xml:"xmlns:tem,attr"`
+	Body    struct {
+		RequestStruct any
+	} `xml:"soapenv:Body"`
+}
+
+type RawData struct {
+	Request  string
+	Response string
+}
+
+func makeBody(reqBody any) ([]byte, error) {
+	env := &SoapEnvelope{SoapEnv: "http://schemas.xmlsoap.org/soap/envelope/", Tem: "http://tempuri.org/", Body: struct{ RequestStruct any }{RequestStruct: reqBody}}
+	output, err := xml.MarshalIndent(env, "", "  ")
+
+	return output, err
+}
+
+func readResponse(data *io.ReadCloser) ([]byte, error) {
+	result, err := io.ReadAll(*data)
+	*data = io.NopCloser(bytes.NewBuffer(result))
+
+	return result, err
+}
+
+func SendRequest(reqBody, resBody any, url string) RawData {
+	var result RawData
+
+	rawRequest, err := makeBody(reqBody)
+	if err != nil {
+		log.Fatal("Error on encoding request body. ", err.Error())
+	}
+
+	result.Request = string(rawRequest)
+
+	req, err := http.NewRequest("POST", url, bytes.NewReader(rawRequest))
 	if err != nil {
 		log.Fatal("Error on creating request object. ", err.Error())
-		return ""
 	}
 	req.Header.Set("Content-type", "text/xml")
 
@@ -27,22 +64,16 @@ func SendRequest(reqBody []byte, resBody any, url string) string {
 	res, err := client.Do(req)
 	if err != nil {
 		log.Fatal("Error on dispatching request. ", err.Error())
-		return ""
 	}
 
-	temp := res.Body
+	rawResponse, err := readResponse(&res.Body)
+
+	result.Response = string(rawResponse)
 
 	err = xml.NewDecoder(res.Body).Decode(resBody)
 	if err != nil {
 		log.Fatal("Error on unmarshaling xml. ", err.Error())
-		return ""
 	}
 
-	resByteData := new(bytes.Buffer)
-
-	resByteData.ReadFrom(temp)
-
-	resRaw := resByteData.String()
-
-	return resRaw
+	return result
 }

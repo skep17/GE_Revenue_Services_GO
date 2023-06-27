@@ -109,13 +109,12 @@ type Waybill struct {
 }
 
 type CheckServiceUserRequest struct {
-	Su string // mandatory
-	Sp string // mandatory
+	XMLName xml.Name `xml:"tem:chek_service_user"`
+	Su      string   `xml:"tem:su"` // mandatory
+	Sp      string   `xml:"tem:sp"` // mandatory
 }
 
 type CheckServiceUserResponse struct {
-	XMLName   xml.Name `xml:"Envelope"`
-	XMLBody   string
 	ReqResult bool `xml:"Body>chek_service_userResponse>chek_service_userResult"`
 	UniqId    int  `xml:"Body>chek_service_userResponse>un_id"`
 	SerUserId int  `xml:"Body>chek_service_userResponse>s_user_id"`
