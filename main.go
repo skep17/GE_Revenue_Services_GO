@@ -6,11 +6,8 @@ import (
 )
 
 func main() {
-	var req waybill.CheckServiceUserRequest
-	req.Su = "vlkuz:12345678910"
-	req.Sp = "123456"
 
-	result, raw := waybill.ChekServiceUser(req)
+	result, raw := waybill.GetServerTime()
 
 	fmt.Println("Here is the request sent:")
 	fmt.Println(raw.Request)

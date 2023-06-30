@@ -40,9 +40,12 @@ func DateTimeToTime(date string, loc *time.Location) (time.Time, error) {
 		}
 	}
 
-	if len(data) < 6 {
-		return time.Now(), errors.New("Could not parse the data!")
-	} else {
+	switch len(data) {
+	case 6:
 		return time.Date(data[0], time.Month(data[1]), data[2], data[3], data[4], data[5], 0, loc), nil
+	case 3:
+		return time.Date(data[0], time.Month(data[1]), data[2], 0, 0, 0, 0, loc), nil
+	default:
+		return time.Now(), errors.New("Could not parse the data!")
 	}
 }
