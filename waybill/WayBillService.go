@@ -329,3 +329,184 @@ func GetServerTime() (GetServerTimeResponse, soap.RawData) {
 	rawData := soap.SendRequest(req, &response, GetURL())
 	return response, rawData
 }
+
+func GetServiceUsers(req GetServiceUsersRequest) (GetServiceUsersResponse, soap.RawData) {
+	var response GetServiceUsersResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetTinFromUnId(req GetTinFromUnIdRequest) (GetTinFromUnIdResponse, soap.RawData) {
+	var response GetTinFromUnIdResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetTransTypes(req GetTransTypesRequest) (GetTransTypesResponse, soap.RawData) {
+	var response GetTransTypesResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetTransporterWaybills(req GetTransporterWaybillsRequest) (GetTransporterWaybillsResponse, soap.RawData) {
+	var response GetTransporterWaybillsResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWaybill(req GetWaybillRequest) (GetWaybillResponse, soap.RawData) {
+	var response GetWaybillResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWaybillByNumber(req GetWaybillByNumberRequest) (GetWaybillByNumberResponse, soap.RawData) {
+	var response GetWaybillByNumberResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWaybillGoodsList(req GetWaybillGoodsListRequest) (GetWaybillGoodsListResponse, soap.RawData) {
+	var response GetWaybillGoodsListResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWaybillTamplate(req GetWaybillTamplateRequest) (GetWaybillTamplateResponse, soap.RawData) {
+	var response GetWaybillTamplateResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWaybillTamplates(req GetWaybillTamplatesRequest) (GetWaybillTamplatesResponse, soap.RawData) {
+	var response GetWaybillTamplatesResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWaybillTypes(req GetWaybillTypesRequest) (GetWaybillTypesResponse, soap.RawData) {
+	var response GetWaybillTypesResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWaybillUnits(req GetWaybillUnitsRequest) (GetWaybillUnitsResponse, soap.RawData) {
+	var response GetWaybillUnitsResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWaybills(req GetWaybillsRequest) (GetWaybillsResponse, soap.RawData) {
+	var response GetWaybillsResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWaybillsEx(req GetWaybillsExRequest) (GetWaybillsExResponse, soap.RawData) {
+	var response GetWaybillsExResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func GetWoodTypes(req GetWoodTypesRequest) (GetWoodTypesResponse, soap.RawData) {
+	var response GetWoodTypesResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func IsVATPayer(req IsVATPayerRequest) (IsVATPayerResponse, soap.RawData) {
+	var response IsVATPayerResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func IsVATPayerTin(req IsVATPayerTinRequest) (IsVATPayerTinResponse, soap.RawData) {
+	var response IsVATPayerTinResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func RefWaybill(req RefWaybillRequest) (RefWaybillResponse, soap.RawData) {
+	var response RefWaybillResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func RefWaybillVd(req RefWaybillVdRequest) (RefWaybillVdResponse, soap.RawData) {
+	var response RefWaybillVdResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func RejectWaybill(req RejectWaybillRequest) (RejectWaybillResponse, soap.RawData) {
+	var response RejectWaybillResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func SaveBarCode(req SaveBarCodeRequest) (SaveBarCodeResponse, soap.RawData) {
+	var response SaveBarCodeResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func SaveCarNumbers(req SaveCarNumbersRequest) (SaveCarNumbersResponse, soap.RawData) {
+	var response SaveCarNumbersResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func SaveInvoice(req SaveInvoiceRequest) (SaveInvoiceResponse, soap.RawData) {
+	var response SaveInvoiceResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func SaveWaybill(req SaveWaybillRequest) (SaveWaybillResponse, soap.RawData) {
+	var response SaveWaybillResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func SaveWaybillTamplate(req SaveWaybillTamplateRequest) (SaveWaybillTamplateResponse, soap.RawData) {
+	var response SaveWaybillTamplateResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func SaveWaybillTransporter(req SaveWaybillTransporterRequest) (SaveWaybillTransporterResponse, soap.RawData) {
+	var response SaveWaybillTransporterResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func SendWaybillVd(req SendWaybillVdRequest) (SendWaybillVdResponse, soap.RawData) {
+	var response SendWaybillVdResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func SendWaybill(req SendWaybillRequest) (SendWaybillResponse, soap.RawData) {
+	var response SendWaybillResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func SendWaybillTransporter(req SendWaybillTransporterRequest) (SendWaybillTransporterResponse, soap.RawData) {
+	var response SendWaybillTransporterResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func UpdateServiceUser(req UpdateServiceUserRequest) (UpdateServiceUserResponse, soap.RawData) {
+	var response UpdateServiceUserResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
+
+func WhatIsMyIP() (WhatIsMyIPResponse, soap.RawData) {
+	var req WhatIsMyIPRequest
+	var response WhatIsMyIPResponse
+	rawData := soap.SendRequest(req, &response, GetURL())
+	return response, rawData
+}
